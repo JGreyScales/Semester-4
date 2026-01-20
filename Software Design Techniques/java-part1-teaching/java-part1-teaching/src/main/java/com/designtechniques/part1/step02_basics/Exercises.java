@@ -14,8 +14,8 @@ public final class Exercises {
      * Example: " 42 " -> 42
      */
     public static int parseTrimmedInt(String input) {
-        // TODO: implement (hint: trim + Integer.parseInt)
-        throw new UnsupportedOperationException("TODO");
+        int value = Integer.parseInt(input.trim());
+        return value;
     }
 
     /**
@@ -23,7 +23,7 @@ public final class Exercises {
      * Keep it as a double (no rounding).
      */
     public static double bmi(double weightKg, double heightM) {
-        // TODO: implement with basic math
-        throw new UnsupportedOperationException("TODO");
+        double BMI = weightKg / (heightM * heightM);
+        return BMI;
     }
 }

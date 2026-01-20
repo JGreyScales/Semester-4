@@ -11,17 +11,19 @@ public final class Exercises02 {
     private Exercises02() {}
 
     public static double bmi(double weightKg, double heightCm) {
-        // TODO: Implement BMI using meters. Example: 70kg and 175cm => ~22.86
-        throw new UnsupportedOperationException("TODO");
+        double heightM = heightCm / 100;
+        double BMI = weightKg / (heightM * heightM);
+        return BMI;
     }
 
     public static boolean isAdult(int age) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        return age >= 18;
     }
 
     public static double safeDivide(double a, double b) {
-        // TODO
-        throw new UnsupportedOperationException("TODO");
+        if (b == 0){
+            throw new IllegalArgumentException("Divide by zero error");
+        }
+        return (a / b);
     }
 }

@@ -11,8 +11,15 @@ public final class Exercises {
      * "FizzBuzz" if divisible by both, otherwise the number as a String.
      */
     public static String fizzBuzz(int n) {
-        // TODO: implement using if/else
-        throw new UnsupportedOperationException("TODO");
+        if (n % 3 == 0 && n % 5 == 0){
+            return "FizzBuzz";
+        } else if (n % 5 == 0){
+            return "Buzz";
+        } else if (n % 3 == 0){
+            return "Fizz";
+        } else {
+            return Integer.toString(n);
+        }
     }
 
     /**
@@ -20,7 +27,20 @@ public final class Exercises {
      * Use inclusive lower bounds: A:90-100, B:80-89, C:70-79, D:60-69, F:0-59.
      */
     public static char letterGrade(int percent) {
-        // TODO: implement (guard invalid values with IllegalArgumentException)
-        throw new UnsupportedOperationException("TODO");
+        if (percent > 100 || percent < 0){
+            throw new IllegalArgumentException("Value is not a percent from 0-100");
+        }
+
+        if (percent >= 90){
+            return 'A';
+        } else if (percent >= 80){
+            return 'B';
+        } else if (percent >= 70){
+            return 'C';
+        } else if (percent >= 60){
+            return 'D';
+        } else {
+            return 'F';
+        }
     }
 }
