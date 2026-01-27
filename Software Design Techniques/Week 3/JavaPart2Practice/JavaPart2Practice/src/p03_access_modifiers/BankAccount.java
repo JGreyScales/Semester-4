@@ -27,11 +27,10 @@ public class BankAccount {
     }
 
     public boolean transferTo(BankAccount target, double amount){
-        if (amount > this.balance){
+        if (!this.withdraw(amount)){
             return false;
-        }
+        };
 
-        this.withdraw(amount);
         target.deposit(amount);
         return true;
     }
