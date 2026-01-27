@@ -11,8 +11,9 @@ public class StudentCounter {
 
     public static int getCount() { return count; }
 
-    public String getName() { return name; }
+    final public String getName() { return name; }
 
-    // TODO: EXERCISE 1
-    // Add a static reset() method for demo/testing that sets count back to 0.
+    public static void reset(){
+        StudentCounter.count = 0;
+    }
 }

@@ -10,6 +10,8 @@ public class Main {
 
         // TODO: EXERCISE 2
         // Mark a method as final in a base class and show it cannot be overridden.
+
+        //demo'd in childStudent.java
     }
 }
 

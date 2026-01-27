@@ -14,6 +14,21 @@ public class Employee {
         return "Employee{name='" + name + "', age=" + age + "}";
     }
 
-    // TODO: EXERCISE 1
-    // Override equals(Object o) and hashCode() so two employees with same name+age are equal.
+    @Override 
+    public int hashCode(){
+        int nameSum = this.name.chars().sum();
+        return nameSum + this.age;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o == null) {return false;}
+        if (o.getClass() != getClass()){
+            return false;
+        }
+        int ownHash = this.hashCode();
+        int otherHash = o.hashCode();
+        System.out.println("Own: " + ownHash + ", Other:" + otherHash);
+        return (otherHash == ownHash);
+    }
 }
