@@ -12,8 +12,10 @@ public class Main {
         System.out.println("A balance: " + a.getBalance());
         System.out.println("B balance: " + b.getBalance());
 
-        // TODO: EXERCISE 2
-        // Call transferTo once you implement it, then print both balances.
+        boolean transferOK = a.transferTo(b, 20);
+        System.out.println("Transfer success? " + transferOK);
+        System.out.println("A balance: " + a.getBalance());
+        System.out.println("B balance: " + b.getBalance());
     }
 }
 

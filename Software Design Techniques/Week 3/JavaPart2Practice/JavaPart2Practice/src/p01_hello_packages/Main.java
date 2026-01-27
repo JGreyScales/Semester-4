@@ -6,12 +6,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello Java (Packages demo)");
 
-        int side = Config.getInt("demo.square.side", 3);
+        int side = Config.getInt("demo.square.side", 4);
+        int second_side = Config.getInt("demo.square.side_two", 6);
         Square square = new Square(side);
+        Square square2 = new Square(second_side);
         square.display();
-
-        // TODO: EXERCISE 2
-        // Create a second Square with a different side length and display it.
+        square2.display();
     }
 }
 

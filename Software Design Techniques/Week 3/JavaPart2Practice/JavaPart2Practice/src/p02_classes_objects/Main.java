@@ -14,8 +14,8 @@ public class Main {
         p.setAge(p.getAge() + 1);
         System.out.println("After birthday: age=" + p.getAge());
 
-        // TODO: EXERCISE 2
-        // Try to set a negative age and confirm your validation works.
+        p.setAge(-30);
+        System.out.println("After negative age: age=" + p.getAge());
     }
 }
 

@@ -26,12 +26,19 @@ public class BankAccount {
         return true;
     }
 
+    public boolean transferTo(BankAccount target, double amount){
+        if (amount > this.balance){
+            return false;
+        }
+
+        this.withdraw(amount);
+        target.deposit(amount);
+        return true;
+    }
+
     // package-private helper (no modifier): only visible inside this package
     void resetForDemoOnly() {
         balance = 0;
     }
-
-    // TODO: EXERCISE 1
-    // Add a transferTo(BankAccount other, double amount) method.
 }
 

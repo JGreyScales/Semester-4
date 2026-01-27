@@ -16,13 +16,15 @@ public class Person {
     public void setName(String name) { this.name = name; }
 
     public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+    public void setAge(int age) { 
+        if (age < 0){
+            return;
+        }
+        this.age = age; 
+    }
 
     public void study() {
         System.out.println(name + " is studying.");
     }
-
-    // TODO: EXERCISE 1
-    // Add validation in setAge so it rejects negative ages (do not change age if invalid).
 }
 

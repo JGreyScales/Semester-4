@@ -14,10 +14,11 @@ public class Square {
         return side * side;
     }
 
-    public void display() {
-        System.out.println("Square(side=" + side + ", area=" + area() + ")");
+    public int perimeter() {
+        return side * 4;
     }
 
-    // TODO: EXERCISE 1
-    // Add a perimeter() method and print it in display().
+    public void display() {
+        System.out.println("Square(side=" + side + ", area=" + area() + ", perimeter=" + perimeter() +")");
+    }
 }
