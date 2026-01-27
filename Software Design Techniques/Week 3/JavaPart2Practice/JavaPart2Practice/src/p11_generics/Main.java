@@ -8,12 +8,11 @@ public class Main {
 
         Box<Integer> intBox = new Box<>(boxValue);
         Box<String> strBox = new Box<>("42");
+        Box<Double> dblBox = new Box<>(42.00);
 
         System.out.println(intBox);
         System.out.println(strBox);
-
-        // TODO: EXERCISE 2
-        // Create a Box<Double> and print it.
+        System.out.println(dblBox);
     }
 }
 

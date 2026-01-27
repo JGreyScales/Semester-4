@@ -8,8 +8,9 @@ public class Main {
         a.display();
         b.display();
 
-        // TODO: EXERCISE 2
-        // Put both shapes into a Shape[] and compute total area.
+        Shape[] shapes = {a, b};
+        Double totalArea = shapes[0].area() + shapes[1].area();
+        System.out.println("Total Area: " + totalArea);
     }
 }
 

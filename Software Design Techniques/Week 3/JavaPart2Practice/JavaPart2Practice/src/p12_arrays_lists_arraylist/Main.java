@@ -20,12 +20,36 @@ public class Main {
         System.out.println("List size=" + list.size());
         System.out.println("List get(0)=" + list.get(0));
 
-        // TODO: EXERCISE 1
-        // Implement a method that finds the max value in an int[] (no Collections).
-        // Then implement the same for a List<Integer>.
 
-        // TODO: EXERCISE 2
-        // Remove all values >= 30 from the list safely (avoid ConcurrentModificationException).
+        int fixedMax = Integer.MIN_VALUE;
+        for (int i = 0; i < fixed.length; i++) {
+            if (fixed[i] > fixedMax){
+                fixedMax = fixed[i];
+            }
+        }
+
+        int listMax = Integer.MIN_VALUE;
+        for (Integer i : list) {
+            if (i > listMax){
+                listMax = i;
+            }
+        }
+
+        System.out.println("Max in fixed = " + fixedMax);
+        System.out.println("Max in list = " + listMax);
+
+        System.out.println("Before filtering:" + list.toString());
+
+        int target = list.size();
+        for (int i = 0; i < target; i++) {
+            if (list.get(i) >= 30){
+                list.remove(i--);
+                target--;
+            }
+        }
+
+        System.out.println("After filtering:" + list.toString());
+
     }
 }
 

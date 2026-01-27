@@ -9,10 +9,10 @@ public class Main {
 
         Bmw car = new Bmw();
         car.move(120);
+        car.cruise(5);
         car.stop();
 
-        // TODO: EXERCISE 2
-        // Try car.move(maxSpeed + 10) and observe validation.
+        car.move(maxSpeed + 10);
     }
 }
 

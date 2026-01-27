@@ -18,6 +18,7 @@ public class Box<T> {
         return "Box{value=" + value + "}";
     }
 
-    // TODO: EXERCISE 1
-    // Add a method <U> boolean hasSameValue(Box<U> other) that compares string representations.
+    public <U> boolean hasSameValue(Box<U> other){
+        return (this.toString().equals(other.toString()));
+    }
 }

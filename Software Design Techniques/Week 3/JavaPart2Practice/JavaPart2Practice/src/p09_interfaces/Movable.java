@@ -9,10 +9,13 @@ public interface Movable {
         System.out.println("Stopping.");
     }
 
+    default void cruise(int length){
+        for (int i = 0; i < length; i++) {
+            this.move(40);
+        }
+    }
+
     static boolean isValidSpeed(int speed) {
         return speed >= 0 && speed <= MAX_SPEED;
     }
-
-    // TODO: EXERCISE 1
-    // Add a default method cruise() that calls move() at a safe speed.
 }

@@ -7,6 +7,5 @@ public abstract class Shape {
         System.out.println(getClass().getSimpleName() + " area=" + area());
     }
 
-    // TODO: EXERCISE 1
-    // Add an abstract perimeter() method and implement it in subclasses.
+    public abstract double perimeter();
 }

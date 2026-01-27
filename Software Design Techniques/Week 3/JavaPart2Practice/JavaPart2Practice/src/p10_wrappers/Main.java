@@ -10,17 +10,29 @@ public class Main {
         numbers.add(10);  // autoboxing: int -> Integer
         numbers.add(20);
 
+        Integer compareNumber = new Integer(10);
         int sum = 0;
         for (Integer n : numbers) { // unboxing: Integer -> int
             sum += n;
+            System.out.println(Integer.parseInt(n.toString())); // reading int from a string
+
         }
         System.out.println("Sum = " + sum);
 
-        // TODO: EXERCISE 1
-        // Parse an integer from a String using Integer.parseInt and handle invalid input.
 
-        // TODO: EXERCISE 2
-        // Demonstrate the difference between == and equals() for wrapper objects.
+        // == is checking reference equality
+        // equals is checking the actual value
+
+        // according to my research values between -128 and 127 would be cached by the compiler and reference equal correctly
+        // for example
+
+        // Integer a = 10;
+        // Integer b = 10;
+        // System.out.println(a == b); would be true
+
+
+        System.out.println("Using equality: " + (compareNumber == numbers.get(0)));
+        System.out.println("Using equals(): " + (compareNumber.equals(numbers.get(0))));
     }
 }
 
