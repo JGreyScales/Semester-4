@@ -8,9 +8,7 @@ public class Main {
         System.out.println("Created: " + a.getName() + ", " + b.getName());
         System.out.println("StudentCounter.getCount(): " + StudentCounter.getCount());
 
-        // TODO: EXERCISE 2
         // Mark a method as final in a base class and show it cannot be overridden.
-
         //demo'd in childStudent.java
     }
 }
