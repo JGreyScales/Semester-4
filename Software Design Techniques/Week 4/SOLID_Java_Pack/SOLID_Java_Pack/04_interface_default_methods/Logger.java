@@ -8,4 +8,8 @@ public interface Logger {
     default void warn(String message) {
         log("WARN", message);
     }
+
+    default void error(String message){
+        log("ERROR", message);
+    }
 }

@@ -7,3 +7,4 @@ Goal: practice class-level (static) state and methods.
    Keep it simple (hardcode current year if you want).
 
 3) Discussion: when is static a bad idea? Provide one example of hidden coupling.
+children and multi-instance uses are coupled through 'shared' resources

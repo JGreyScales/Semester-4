@@ -13,5 +13,8 @@ public class Main {
 
         Vehicle v = new Vehicle();
         v.start();
+
+        Device d = new Device();
+        System.out.println(d.serialNumber());
     }
 }

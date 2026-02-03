@@ -5,6 +5,11 @@ public class Car {
 
     private static int numberOfCars = 0;
 
+    public static Car of(String model){
+        int currentYear = 2026;
+        return new Car(model, currentYear);
+    }
+
     public Car(String model, int year) {
         this.model = model;
         this.year = year;
@@ -21,5 +26,9 @@ public class Car {
 
     public int getNumberOfCarsLikeInstance() {
         return numberOfCars;
+    }
+
+    public static void resetCountter() {
+        numberOfCars = 0;
     }
 }

@@ -7,3 +7,5 @@ Goal: apply generics (type parameters) like in the slide.
    <T> void copy(Box<T> from, Box<T> to)
 
 3) Why can't you do Box<int>? Write a brief explanation referencing primitives vs wrappers.
+// int is not a Wrapper, it is a raw primitive type.
+Runtime generics can only occur with wrappers as they have behaviour to handle it.
