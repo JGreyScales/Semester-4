@@ -1,0 +1,8 @@
+Package: crow
+Version: 1.2.0
+Depends: asio, vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: cb23f10acfe5d70c768e978c6acefbdb92cb970bf65a3368ea0553e4b7377311
+Description: Very fast and easy to use C++ micro web framework
+Status: install ok installed

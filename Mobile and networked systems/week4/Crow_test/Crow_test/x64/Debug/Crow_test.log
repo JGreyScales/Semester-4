@@ -1,0 +1,223 @@
+﻿  The vcpkg manifest was disabled, but we found a manifest file in D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
+  Main.cpp
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_parser_merged.h(587,32): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_parser_merged.h(607,32): warning C4244: '=': conversion from '__int64' to 'unsigned long', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\json.h(1265,35): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\json.h(1747,32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(97,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(116,48): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(118,53): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         with
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         [
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:             _Ty=int
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(118,53): warning C4267:         ]
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(219,94): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(367,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(378,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(396,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(407,54): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(469,60): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\mustache.h(569,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(795,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(795,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(799,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(799,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(803,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(803,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(807,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(807,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(811,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(811,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(815,74): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(815,74): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(821,66): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(821,66): warning C4566: character represented by universal-character-name '\u279D' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(832,31): warning C4566: character represented by universal-character-name '\u2514' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(832,31): warning C4566: character represented by universal-character-name '\u2799' cannot be represented in the current code page (1252)
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(895,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(916,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(937,70): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(959,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(975,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(990,61): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1045,53): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1056,45): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1303,101): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1303,87): warning C4267: 'argument': conversion from 'size_t' to 'uint16_t', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1309,118): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1369,100): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\routing.h(1523,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(225,37): warning C4267: '=': conversion from 'size_t' to 'uint16_t', possible loss of data
+  (compiling source file 'Main.cpp')
+      D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(225,37):
+      the template instantiation context (the oldest one first) is
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\Main.cpp(4,21):
+          see reference to class template instantiation 'crow::Crow<>' being compiled
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\app.h(494,14):
+          while compiling class template member function 'void crow::Crow<>::run(void)'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\Main.cpp(10,40):
+              see the first reference to 'crow::Crow<>::run' in 'main'
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\app.h(519,26):
+          see reference to class template instantiation 'crow::Server<crow::Crow<>,crow::SocketAdaptor>' being compiled
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(214,18):
+          while compiling class template member function 'uint16_t crow::Server<crow::Crow<>,crow::SocketAdaptor>::pick_io_service_idx(void)'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(234,38):
+              see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::pick_io_service_idx' in 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(168,22):
+              see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept' in 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\app.h(525,29):
+              see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run' in 'crow::Crow<>::run'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\Main.cpp(10,40):
+              see the first reference to 'crow::Crow<>::run' in 'main'
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(492,75): warning C4244: 'argument': conversion from 'unsigned __int64' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+      D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(492,75):
+      the template instantiation context (the oldest one first) is
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(230,14):
+          while compiling class template member function 'void crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept(void)'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(168,22):
+              see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::do_accept' in 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\app.h(525,29):
+              see the first reference to 'crow::Server<crow::Crow<>,crow::SocketAdaptor>::run' in 'crow::Crow<>::run'
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\Main.cpp(10,40):
+              see the first reference to 'crow::Crow<>::run' in 'main'
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_server.h(244,19):
+          see reference to class template instantiation 'crow::Connection<Adaptor,Handler>' being compiled
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(483,14):
+          while compiling class template member function 'void crow::Connection<Adaptor,Handler>::do_read(void)'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(101,34):
+              see the first reference to 'crow::Connection<Adaptor,Handler>::do_read' in 'crow::Connection<Adaptor,Handler>::start::<lambda_1>::operator ()'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  
+D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\parser.h(126,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Main.cpp')
+      D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\parser.h(126,25):
+      the template instantiation context (the oldest one first) is
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(604,32):
+          see reference to class template instantiation 'crow::HTTPParser<crow::Connection<Adaptor,Handler>>' being compiled
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+          D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\parser.h(110,14):
+          while compiling class template member function 'bool crow::HTTPParser<crow::Connection<Adaptor,Handler>>::feed(const char *,int)'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+              D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\x64-windows\include\crow\http_connection.h(492,32):
+              see the first reference to 'crow::HTTPParser<crow::Connection<Adaptor,Handler>>::feed' in 'crow::Connection<Adaptor,Handler>::do_read::<lambda_1>::operator ()'
+          with
+          [
+              Adaptor=crow::SocketAdaptor,
+              Handler=crow::Crow<>
+          ]
+  
+  Crow_test.vcxproj -> D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\x64\Debug\Crow_test.exe

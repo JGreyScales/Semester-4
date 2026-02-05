@@ -1,0 +1,7 @@
+libdir=D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\vcpkg\blds\openssl\x64-windows-rel
+includedir=D:\Programming\Semester-4\Mobile and networked systems\week4\Crow_test\vcpkg_installed\vcpkg\blds\openssl\x64-windows-rel\include
+
+Name: OpenSSL
+Description: Secure Sockets Layer and cryptography libraries and tools
+Version: 3.3.0
+Requires: libssl libcrypto
