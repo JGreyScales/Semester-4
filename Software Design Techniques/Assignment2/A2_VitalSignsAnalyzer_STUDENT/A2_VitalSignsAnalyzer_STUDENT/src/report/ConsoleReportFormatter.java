@@ -20,7 +20,7 @@ public class ConsoleReportFormatter implements ReportFormatter<Map<String, Patie
         Collections.sort(keys);
 
         StringBuilder value = new StringBuilder();
-        value.append("PatientID,okCount,warningCount,criticalCount,recordCount,meanHR,minSp02,maxTemp,nonOkpercent\n");
+        value.append("patient_id,ok,warning,critical,records,mean_hr,min_spo2,max_temp,non_ok_pct\n");
 
         for (String key : keys) {
             value.append(summaries.get(key).toString());
