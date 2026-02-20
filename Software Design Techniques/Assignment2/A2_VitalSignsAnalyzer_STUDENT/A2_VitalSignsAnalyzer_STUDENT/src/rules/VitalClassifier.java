@@ -3,74 +3,85 @@ package rules;
 import model.Severity;
 import model.VitalSignRecord;
 import stats.PatientSummary;
-import util.Validation;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Step 2:
- * - Implement per-vital classification methods using constants from VitalRules
- * - Overall severity is max severity across vitals in a row
- * - Aggregate OK/WARNING/CRITICAL counts per patient
- *
- * Step 3:
- * - Feed records into PatientSummary so it can compute statistics
+ * Step 2: Implement per-vital classification using VitalRules constants.
+ * Step 3: Feed records into PatientSummary for statistics.
  */
 public class VitalClassifier {
 
-    private static <T extends Comparable<T>> Severity getSeverity(T[] limits, T value) {
-        Validation.require(limits.length == 4, "Limits length does not match expected");
-        // limit schema
-        // lower good, upper good, lower critical, upper critical
-        // good bounds must be within critical bounds
-        // gap between is classified as a warning bounds
-
-        // warning bounds
-        if ( value.compareTo(limits[0]) < 0 || value.compareTo(limits[1]) > 0){
-            // critical bounds
-            if (value.compareTo(limits[2]) <= 0 || value.compareTo(limits[3]) >= 0) {
-                return Severity.CRITICAL;
-            }
-            return Severity.WARNING;
+    /**
+     * Logic:
+     * 1. If within [lowerOk, upperOk] inclusive -> OK
+     * 2. If below lowerCritical OR above upperCritical -> CRITICAL
+     * 3. Else -> WARNING
+     */
+    private Severity classifyInt(Integer[] limits, int value) {
+        if (value >= limits[0] && value <= limits[1]) {
+            return Severity.OK;
         }
-        return Severity.OK;
+        // Critical is < lower or > upper (Note: your HR/SBP rules use > for Critical, 
+        // so we check if it falls outside the warning/ok zone)
+        if (value < limits[2] || value > limits[3]) {
+            return Severity.CRITICAL;
+        }
+        return Severity.WARNING;
+    }
+
+    private Severity classifyDouble(Double[] limits, double value) {
+        if (value >= limits[0] && value <= limits[1]) {
+            return Severity.OK;
+        }
+        // Temp rule says CRITICAL if < 35.5 or >= 39.0
+        if (value < limits[2] || value >= limits[3]) {
+            return Severity.CRITICAL;
+        }
+        return Severity.WARNING;
     }
 
     public Severity classifyHeartRate(int hr) {
-        return getSeverity(VitalRules.HR, hr);
+        return classifyInt(VitalRules.HR, hr);
     }
 
     public Severity classifySpo2(int spo2) {
-       return getSeverity(VitalRules.SpO2, spo2);
+        // SpO2 logic: OK >= 95, WARNING 90-94, CRITICAL < 90
+        if (spo2 >= VitalRules.SpO2[0]) return Severity.OK;
+        if (spo2 < VitalRules.SpO2[2]) return Severity.CRITICAL;
+        return Severity.WARNING;
     }
 
     public Severity classifybp(int sbp, int dbp) {
-        Severity sbpClassification = getSeverity(VitalRules.SBP, sbp);
-        Severity dbpClassification = getSeverity(VitalRules.DBP, dbp);
-        return Severity.max(sbpClassification, dbpClassification);
+        Severity sbpSev = classifyInt(VitalRules.SBP, sbp);
+        
+        // DBP implementation based on your rules: OK < 90, CRITICAL >= 96
+        Severity dbpSev;
+        if (dbp <= 89) {
+            dbpSev = Severity.OK;
+        } else if (dbp >= 96) {
+            dbpSev = Severity.CRITICAL;
+        } else {
+            dbpSev = Severity.WARNING;
+        }
+        
+        return Severity.max(sbpSev, dbpSev);
     }
 
     public Severity classifyTemp(double tempC) {
-        return getSeverity(VitalRules.TEMP, tempC);
+        return classifyDouble(VitalRules.TEMP, tempC);
     }
 
     public Severity classifyRecord(VitalSignRecord r) {
-        Severity[] recordValues = new Severity[4];
+        Severity hr = classifyHeartRate(r.getHrBpm());
+        Severity spo2 = classifySpo2(r.getSpo2Pct());
+        Severity bp = classifybp(r.getSbpMmhg(), r.getDbpMmhg());
+        Severity temp = classifyTemp(r.getTempC());
 
-        recordValues[0] = this.classifyHeartRate(r.getHrBpm());
-        recordValues[1] = this.classifySpo2(r.getSpo2Pct());
-        recordValues[2] = this.classifybp(r.getSbpMmhg(), r.getDbpMmhg());
-        recordValues[3] = this.classifyTemp(r.getTempC());
-
-        Severity max = Severity.OK;
-
-        for (Severity severity : recordValues) {
-            max = Severity.max(max, severity);
-        }
-
-        return max;
+        // Overall severity is the maximum of any single vital
+        return Severity.max(hr, Severity.max(spo2, Severity.max(bp, temp)));
     }
 
     public Map<String, PatientSummary> buildSummaries(List<VitalSignRecord> records) {
@@ -80,10 +91,14 @@ public class VitalClassifier {
             PatientSummary s = map.computeIfAbsent(r.getPatientId(), PatientSummary::new);
             Severity severity = this.classifyRecord(r);
 
-            if (severity.equals(Severity.CRITICAL)){s.incCritical();}
-            else if (severity.equals(Severity.WARNING)){s.incWarning();}
-            else {s.incOk();}
-            
+            if (severity == Severity.CRITICAL) {
+                s.incCritical();
+            } else if (severity == Severity.WARNING) {
+                s.incWarning();
+            } else {
+                s.incOk();
+            }
+
             s.addRecord(r, severity);
         }
         return map;

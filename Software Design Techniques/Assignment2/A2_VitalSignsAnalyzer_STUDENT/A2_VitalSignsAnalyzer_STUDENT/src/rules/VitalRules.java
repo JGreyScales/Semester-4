@@ -14,12 +14,22 @@ package rules;
  * Temp (C): OK 36.0–37.5, WARNING 35.5–35.9 or 37.6–38.9, CRITICAL <35.5 or ≥39.0
  */
 public class VitalRules {
-    // lower good, upper good, lower critical, upper critical
-    // defined this way so that I can use generics in the vitalClassifier.java.VitalClassifier.getSeverity()
-    public static final Integer[] HR = {60, 100, 50, 140};
-    public static final Integer[] SpO2 = {95, 100, 90, 90};
-    public static final Integer[] SBP = {60, 100, 80, 160};
-    public static final Integer[] DBP = {0, 80, 0, 96};
+    // Schema: {lowerOk, upperOk, lowerCritical, upperCritical}
+    
+    // OK 60–100, CRITICAL <50 or >140
+    public static final Integer[] HR = {60, 100, 50, 140}; 
+
+    // OK ≥95 (Upper is 100%), CRITICAL <90
+    public static final Integer[] SpO2 = {95, 100, 90, 101}; 
+
+    // OK 90–139, CRITICAL <80 or >160
+    public static final Integer[] SBP = {90, 139, 80, 160}; 
+
+    // Instructions didn't provide specific DBP "OK" ranges for the 1.6.1 table, 
+    // but typically DBP OK is < 90
+    public static final Integer[] DBP = {0, 89, 0, 120}; 
+
+    // OK 36.0–37.5, CRITICAL <35.5 or ≥39.0
     public static final Double[] TEMP = {36.0, 37.5, 35.5, 39.0};
 
     private VitalRules() {}
