@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ketchup... - Product Page</title>
+    <link rel="stylesheet" href="http://localhost:23500/getStyle/styles.css">
+</head>
+
+<body>
+    <div class="product-page">
+        <header>
+            <a href="http://localhost:23500/" class="back-btn">Back</a>
+            <h1>Ketchup</h1>
+            <img src="http://localhost:23500/getImage/ketchup.jpg" alt="Chips" class="product-image">
+        </header>
+        
+        <section class="product-description">
+            <p>its just ketchup.</p>
+        </section>
+        
+        <section class="order-section">
+            <label for="quantity">Enter quantity (non-negative integer):</label>
+            <input type="number" id="quantity" name="quantity" min="0" step="1" placeholder="0" required>
+            <button id="confirm-btn" onclick="addToCart(document.getElementById('quantity').value, document.getElementById('order-message'), 'ketchup')">Confirm Order</button>
+        </section>
+        <section id="order-message"></section>
+    </div>
+
+    <script src="http://localhost:23500/getScript/addToCart.js"></script>
+</body>
+
+</html>
