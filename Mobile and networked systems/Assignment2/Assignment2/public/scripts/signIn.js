@@ -6,11 +6,14 @@ async function signIn() {
         return;
     }
 
-    let response = await fetch(`http://localhost:23500/login/${username}/${password}`, {
-        method: 'GET',
+    let response = await fetch(`http://localhost:23500/login`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        },
+        }, body: {
+            "username": username,
+            "password": password
+        }
     }).catch((error) => { 
         console.log(error);
     });
@@ -22,7 +25,7 @@ async function signIn() {
 
     // Make a second fetch request to checkout
     // await not needed because of .thens
-    let shoppingCart = fetch(`http://localhost:23500/checkout`, {
+    fetch(`http://localhost:23500/checkout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

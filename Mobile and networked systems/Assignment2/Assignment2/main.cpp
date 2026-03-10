@@ -106,8 +106,20 @@ int main()
 		res.end(); 
 	});
 
-	CROW_ROUTE(app, "/login/<string>/<string>")
-	([](const crow::request &req, crow::response &res, std::string username, std::string password){
+	CROW_ROUTE(app, "/login").methods(crow::HTTPMethod::Post)
+	([](const crow::request &req, crow::response &res){
+		const crow::json::rvalue jsonBody = crow::json::load(req.body);
+
+		if (!jsonBody){
+			res.code = 400;
+			res.write("Invalid body");
+			res.end();
+			return;
+		}
+
+		std::string username = jsonBody["username"].s();
+		std::string password = jsonBody["password"].s();
+
 		std::cout << "username: " << username << " password: " << password << std::endl;
 		if (username == "admin" && password == "123"){
 			res.code = 202;
