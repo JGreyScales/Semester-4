@@ -52,6 +52,7 @@ int main()
 	([](const crow::request &req, crow::response &res)
 	{ 
 		res.write(sendFile("index.html"));
+		res.add_header("Content-Type", "text/html");
 		res.end(); 
 	});
 
@@ -72,6 +73,7 @@ int main()
 		std::cout << "Adding: " << amount << ' ' << product << "'s" << std::endl;
 		shoppingCart::setItem(product, amount);
 		res.write("Item added successfully");
+		res.add_header("Content-Type", "text/plain");
 		res.end();
 	});
 
@@ -79,6 +81,7 @@ int main()
 	([](const crow::request &req, crow::response &res, std::string filename)
 	 { 
 		res.write(sendFile(filename));
+		res.add_header("Content-Type", "text/html");
 		res.end(); 
 	});
 
@@ -109,6 +112,7 @@ int main()
 	CROW_ROUTE(app, "/login").methods(crow::HTTPMethod::Post)
 	([](const crow::request &req, crow::response &res){
 		const crow::json::rvalue jsonBody = crow::json::load(req.body);
+		res.add_header("Content-Type", "text/plain");
 
 		if (!jsonBody){
 			res.code = 400;
