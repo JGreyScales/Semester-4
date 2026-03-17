@@ -111,21 +111,22 @@ int main()
 
 	CROW_ROUTE(app, "/login").methods(crow::HTTPMethod::Post)
 	([](const crow::request &req, crow::response &res){
-		const crow::json::rvalue jsonBody = crow::json::load(req.body);
 		res.add_header("Content-Type", "text/plain");
 
-		if (!jsonBody){
+		const char* user_ptr = req.url_params.get("username");
+		const char* pass_ptr = req.url_params.get("password");
+
+		if (user_ptr == nullptr || pass_ptr == nullptr) {
 			res.code = 400;
-			res.write("Invalid body");
+			res.write("Missing username or password query parameters");
 			res.end();
 			return;
 		}
 
-		std::string username = jsonBody["username"].s();
-		std::string password = jsonBody["password"].s();
+		std::string username(user_ptr);
+		std::string password(pass_ptr);
 
-		std::cout << "username: " << username << " password: " << password << std::endl;
-		if (username == "admin" && password == "123"){
+		if (username == "admin" && password == "123") {
 			res.code = 202;
 			res.write("Accepted");
 		} else {
@@ -133,7 +134,8 @@ int main()
 			res.write("Unauthorized");
 		}
 		res.end();
-	});
+		return;
+});
 
 	app.port(23500).multithreaded().run();
 	return 1;

@@ -6,16 +6,15 @@ async function signIn() {
         return;
     }
 
-    let response = await fetch(`http://localhost:23500/login`, {
+    const url = `http://localhost:23500/login?username=${username}&password=${password}`;
+
+    let response = await fetch(url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-        }, body: {
-            "username": username,
-            "password": password
+            'Content-Type': 'text/plain',
         }
     }).catch((error) => { 
-        console.log(error);
+        console.log("Network error:", error);
     });
 
     if (!response.ok) {
