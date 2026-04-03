@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class User extends DataExporter {
     int userID;
     static ArrayList<User> Users;
-// perm enum
+    PermissionManager.permission permission;
     String userName;
 
-    // getUserPermssion
+    PermissionManager.permission getUserPermission(){
+        return permission;
+    }
 
     @Override
     boolean export() {

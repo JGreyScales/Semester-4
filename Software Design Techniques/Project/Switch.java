@@ -1,17 +1,17 @@
 public class Switch extends Devices {
-    @Override
-    int getCurrentState() {
-        // TODO Auto-generated method stub
-        return super.getCurrentState();
-    }
 
-    Boolean setCurrentState(){
-        return false;
+    public Switch(){
+        super();
     }
 
     @Override
-    boolean addDevice() {
-        // TODO Auto-generated method stub
-        return super.addDevice();
+    boolean setCurrentState(int _x){
+        // we discard the parameter for this
+        if (this.curState == 0){
+            this.curState = 1;
+        } else {
+            this.curState = 0;
+        }
+        return true;
     }
 }
