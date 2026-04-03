@@ -1,17 +1,13 @@
 public class Unbounded extends Devices {
-    @Override
-    int getCurrentState() {
-        // TODO Auto-generated method stub
-        return super.getCurrentState();
+
+    Unbounded(String name){
+        super();
+        this.name = name;
     }
 
-    Boolean setCurrentState(){
-        return false;
+    boolean setCurrentState(int x){
+        this.curState = x;
+        return true;
     }
 
-    @Override
-    boolean addDevice() {
-        // TODO Auto-generated method stub
-        return super.addDevice();
-    }
 }

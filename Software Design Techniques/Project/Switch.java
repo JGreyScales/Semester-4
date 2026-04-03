@@ -1,7 +1,9 @@
 public class Switch extends Devices {
 
-    public Switch(){
+    public Switch(String name){
         super();
+
+        this.name = name;
     }
 
     @Override
