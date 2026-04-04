@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class AutomatedEventManager extends DataExporter {
-    static ArrayList<AutomatedEvent> automationQueue;
+    static ArrayList<AutomatedEvent> automationQueue = new ArrayList<>();
+
+    static boolean addAutomatedEventToQueue(AutomatedEvent event){
+        return automationQueue.add(event);
+    }
 
     static boolean static_export() {
 

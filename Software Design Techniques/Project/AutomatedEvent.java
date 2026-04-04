@@ -4,25 +4,28 @@ public class AutomatedEvent extends AutomatedEventManager {
     
     int eventID;
     int throttlePer;
-    ArrayList<Tuple<AutomatedEvent, Devices>> eventQueue;
+    boolean allNeedToPass;
+    Devices designatedDevice;
+    ArrayList<Check<Number>> checkQueue;
+
+    boolean addCheck(Check<Number> check){
+        return checkQueue.add(check);
+    }
 
     @Override
     boolean export() {
         System.out.println("--- Automated Event Data ---");
         System.out.println("Event ID    : " + eventID);
         System.out.println("Throttle %  : " + throttlePer);
-        
+        designatedDevice.display();
         
         System.out.println("Event Queue : ");
-        if (eventQueue == null || eventQueue.isEmpty()) {
+        if (checkQueue == null || checkQueue.isEmpty()) {
             System.out.println("  [Empty]");
         } else {
-            for (Tuple<AutomatedEvent, Devices> entry : eventQueue) {
+            for (Check<Number> entry : checkQueue) {
                 System.out.println("Check Object " );
-                entry.getFirst().export();
-
-                System.out.println("Device Object " );
-                entry.getSecond();
+                entry.export();
             }
         }
         
@@ -30,7 +33,6 @@ public class AutomatedEvent extends AutomatedEventManager {
         return true; 
     }
 
-    // Adding a toString method is best practice for printing objects
     @Override
     public String toString() {
         return "Event[ID=" + eventID + ", Throttle=" + throttlePer + "%]";
@@ -38,6 +40,30 @@ public class AutomatedEvent extends AutomatedEventManager {
 
     @Override
     boolean peform() {
-        return super.peform();
+        boolean onePass = false;
+        for (Check<Number> check : checkQueue) {
+
+            // throttle checks
+            try {
+                Thread.sleep(Math.round(1000 * (1.0 + (throttlePer / 100.0))));
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+                System.err.println("The event execution was interrupted.");
+            }
+
+            check.setInput1(designatedDevice.curState);
+
+            if (check.peform()){
+                onePass = true;
+                continue;
+            } else {
+                if (allNeedToPass){
+                    return false;
+                }
+            }
+        }
+
+
+        return onePass;
     }
 }
