@@ -42,8 +42,9 @@ public class UIManager {
         System.out.println("6) add user");
         System.out.println("7) display audits");
         System.out.println("8) sign in to user");
+        System.out.println("9) run demo autosetup");
 
-        int choice = this.getInputChoice(1, 8);
+        int choice = this.getInputChoice(1, 9);
 
         switch (choice) {
             case 1:
@@ -89,6 +90,12 @@ public class UIManager {
                 screenPath.add("loginPage");
                 this.getLoginPage();
                 break; 
+            case 9:
+                System.out.println("Creating demo devices");
+                Devices.createDevicesForDemo();
+
+                System.out.println("Creating demo automated events");
+                AutomatedEvent.setupAutomatedEventsForDemo();
             default:
                 break;
         }
@@ -105,7 +112,7 @@ public class UIManager {
         event.eventID = this.getInputChoice(1, 999);
 
         System.out.println("enter the throttle %");
-        event.eventID = this.getInputChoice(0, 100);
+        event.throttlePer = this.getInputChoice(0, 100);
 
         Devices.displayAll();
         System.out.println("Select a device by index");

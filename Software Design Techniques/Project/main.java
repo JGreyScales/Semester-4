@@ -1,9 +1,5 @@
 public class Main {
-  public static void main(String[] args) {
-
-    // init devices
-    Devices.deviceStartUp();
-    
+  public static void main(String[] args) {  
 
     UIManager UI = new UIManager();
 

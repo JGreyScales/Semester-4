@@ -10,6 +10,7 @@ public class Devices {
         this.curState = 0;
     }
     
+
     int getCurrentState(){
         return curState;
     }
@@ -18,7 +19,7 @@ public class Devices {
         return false;
     }
 
-    static void deviceStartUp(){
+    static void createDevicesForDemo(){
         // 2 switches
         new Switch("Switch 1").addDevice();
         new Switch("Switch 2").addDevice();
