@@ -12,6 +12,42 @@ public class AutomatedEvent extends AutomatedEventManager {
         return checkQueue.add(check);
     }
 
+    static void setupAutomatedEventsForDemo(){
+        AutomatedEvent event1 = new AutomatedEvent();
+        event1.eventID = 1;
+        event1.throttlePer = 0;
+        event1.designatedDevice = Devices.devices.get(0);
+        event1.allNeedToPass = true;
+        Check<Number> check1 = new GreaterThan();
+        check1.setInput2(50);
+        event1.addCheck(check1);
+        Check<Number> check2 = new LessThan();
+        check2.setInput2(180);
+        event1.addCheck(check2);
+        Check<Number> check3 = new GreaterThan();
+        check3.setInput2(-25);
+        event1.addCheck(check3);
+
+        AutomatedEventManager.addAutomatedEventToQueue(event1);
+
+        AutomatedEvent event2 = new AutomatedEvent();
+        event2.eventID = 1;
+        event2.throttlePer = 0;
+        event2.designatedDevice = Devices.devices.get(4);
+        event2.allNeedToPass = true;
+        Check<Number> check2_1 = new GreaterThan();
+        check2_1.setInput2(50);
+        event2.addCheck(check2_1);
+        Check<Number> check2_2 = new LessThan();
+        check2_2.setInput2(180);
+        event2.addCheck(check2_2);
+        Check<Number> check2_3 = new GreaterThan();
+        check2_3.setInput2(-25);
+        event2.addCheck(check2_3);
+
+        AutomatedEventManager.addAutomatedEventToQueue(event2);
+    }
+
     @Override
     boolean export() {
         System.out.println("--- Automated Event Data ---");
