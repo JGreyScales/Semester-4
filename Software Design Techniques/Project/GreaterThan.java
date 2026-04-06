@@ -1,6 +1,7 @@
 public class GreaterThan extends Check<Number> {
     @Override
     boolean export() {
+        System.out.println("Event type: GreaterThan");
         return super.export();
     }
 

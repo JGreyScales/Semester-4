@@ -6,7 +6,7 @@ public class AutomatedEvent extends AutomatedEventManager {
     int throttlePer;
     boolean allNeedToPass;
     Devices designatedDevice;
-    ArrayList<Check<Number>> checkQueue;
+    ArrayList<Check<Number>> checkQueue = new ArrayList<>();
 
     boolean addCheck(Check<Number> check){
         return checkQueue.add(check);
@@ -40,9 +40,16 @@ public class AutomatedEvent extends AutomatedEventManager {
 
     @Override
     boolean peform() {
+        int ticker = 0;
         boolean onePass = false;
-        for (Check<Number> check : checkQueue) {
 
+        if (checkQueue.isEmpty()){
+            System.out.println("No checks to perform");
+            return true;
+        }
+
+        for (Check<Number> check : checkQueue) {
+            ticker += 1;
             // throttle checks
             try {
                 Thread.sleep(Math.round(1000 * (1.0 + (throttlePer / 100.0))));
@@ -54,9 +61,11 @@ public class AutomatedEvent extends AutomatedEventManager {
             check.setInput1(designatedDevice.curState);
 
             if (check.peform()){
+                System.out.println("Check " + ticker + " Passed");
                 onePass = true;
                 continue;
             } else {
+                System.out.println("Check " + ticker + " Failed");
                 if (allNeedToPass){
                     return false;
                 }

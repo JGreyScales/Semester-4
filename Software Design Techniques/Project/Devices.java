@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Devices {
     static ArrayList<Devices> devices = new ArrayList<>();
@@ -28,6 +29,8 @@ public class Devices {
 
         new Unbounded("Unbound 1").addDevice();
         new Unbounded("Unbound 2").addDevice();
+
+        Devices.setRandomAllDevices();
     }
 
     void display() {
@@ -37,6 +40,14 @@ public class Devices {
     static void displayAll(){
         for (Devices deviceObject : devices) {
             deviceObject.display();
+        }
+    }
+
+    static void setRandomAllDevices() {
+        Random random = new Random();
+        for (Devices devicesObj : devices) {
+            int number = random.nextInt(400) - 200;
+            devicesObj.setCurrentState(number);
         }
     }
 

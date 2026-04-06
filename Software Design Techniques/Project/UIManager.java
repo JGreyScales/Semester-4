@@ -32,8 +32,10 @@ public class UIManager {
     void getHomePage(){
         if (screenPath.isEmpty() || !screenPath.get(0).equals("homepage")){
                 screenPath.add(0, "homepage");
+            } else {
+                Devices.setRandomAllDevices();
             }
-
+        
         System.out.println("1) display devices");
         System.out.println("2) execute next automation");
         System.out.println("3) add automation");
@@ -105,7 +107,7 @@ public class UIManager {
         event.eventID = this.getInputChoice(1, 999);
 
         System.out.println("enter the throttle %");
-        event.eventID = this.getInputChoice(0, 100);
+        event.throttlePer = this.getInputChoice(0, 100);
 
         Devices.displayAll();
         System.out.println("Select a device by index");
@@ -146,7 +148,7 @@ public class UIManager {
         }
 
         AutomatedEventManager.addAutomatedEventToQueue(event);
-        
+
         screenPath.remove("addAutomationPage");
         return;
     }
