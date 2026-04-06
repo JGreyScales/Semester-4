@@ -37,6 +37,8 @@ public class User extends DataExporter {
         de.time = LocalDate.now();
         de.type = "User switch";
         de.status = true;
+        de.invokerID = User.currentUser.userID;
+
 
         AuditLogManager.addLog(de);
 

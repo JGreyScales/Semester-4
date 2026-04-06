@@ -12,6 +12,7 @@ public class AutomatedEventManager extends DataExporter {
         de.type = "automation added to queue";
         de.exportable = true;
         de.log = "added automation: " + event.export();
+        de.invokerID = User.currentUser.userID;
 
         return de.status;
     }

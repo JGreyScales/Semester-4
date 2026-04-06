@@ -19,6 +19,8 @@ public class GreaterThan extends Check<Number> {
         de.type = "Peform check";
         de.log = this.export();
         de.status = input1.doubleValue() > input2.doubleValue();
+        de.invokerID = User.currentUser.userID;
+
 
         AuditLogManager.addLog(de);
         return de.status;

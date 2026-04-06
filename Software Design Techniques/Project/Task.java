@@ -14,6 +14,8 @@ public class Task extends AutomatedEvent {
         de.time = LocalDate.now();
         de.exportable = true;
         de.type = "Task perform";
+        de.invokerID = User.currentUser.userID;
+
         StringBuilder sb = new StringBuilder();
 
         if (requiredPermission.getLevel() > User.currentUser.permission.getLevel()){

@@ -18,6 +18,7 @@ public class Equals extends Check<Number> {
         de.type = "Peform check";
         de.log = this.export();
         de.status = input1 == input2;
+        de.invokerID = User.currentUser.userID;
 
         AuditLogManager.addLog(de);
         return de.status;

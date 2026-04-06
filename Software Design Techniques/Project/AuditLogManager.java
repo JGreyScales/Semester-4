@@ -7,39 +7,51 @@ public class AuditLogManager extends DataExporter {
         dataList.add(data);
     }
 
-    boolean recieveLog(DataExporter data){
-        return false;
+    ArrayList<DataExporter> fetchLogsOfType(String data){
+        ArrayList<DataExporter> filtered = new ArrayList<>();
+            for (DataExporter log : dataList) {
+                if (log.type.equalsIgnoreCase(type)) {
+                    filtered.add(log);
+                }
+            }
+        return filtered;
     }
 
-    boolean fetchLogsOf(DataExporter data){
-        return false;
+    ArrayList<DataExporter> filterByStatus(boolean status){
+        ArrayList<DataExporter> filtered = new ArrayList<>();
+            for (DataExporter log : dataList) {
+                if (log.status == status) {
+                    filtered.add(log);
+                }
+            }
+        return filtered;
     }
 
-    boolean fetchLogs(){
-        return false;
+    ArrayList<DataExporter> filterByInvokerID(int ID){
+        ArrayList<DataExporter> filtered = new ArrayList<>();
+            for (DataExporter log : dataList) {
+                if (log.invokerID == ID) {
+                    filtered.add(log);
+                }
+            }
+        return filtered;
     }
 
-    boolean filterByStatus(boolean status){
-        return false;
-    }
-
-    boolean filterByInvokerID(int ID){
-        return false;
-    }
-
-    boolean filterByTime(int minimumDate){
-        return false;
-    }
-
-    boolean filterByDevice(Devices device){
-        return false;
+    ArrayList<DataExporter> filterByTime(int minimumDate){
+       ArrayList<DataExporter> filtered = new ArrayList<>();
+        for (DataExporter log : dataList) {
+            if (log.time.toEpochSecond(null, null) >= minimumDate) {
+                filtered.add(log);
+            }
+        }
+        return filtered;
     }
 
     ArrayList<String> getEventStringsFromData() {
-        return null;
-    }
-
-    ArrayList<DataExporter> getDataList(){
-        return dataList;
+        ArrayList<String> eventStrings = new ArrayList<>();
+        for (DataExporter log : dataList) {
+            eventStrings.add(log.type);
+        }
+        return eventStrings;
     }
 }
