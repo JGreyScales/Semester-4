@@ -5,37 +5,37 @@ public class UIManager {
     static ArrayList<String> screenPath = new ArrayList<>();
     static Scanner lineReader = new Scanner(System.in);
 
-    String getStringInput(){
+    String getStringInput() {
         return lineReader.nextLine();
     }
 
-    int getInputChoice(int min, int max){
+    int getInputChoice(int min, int max) {
         boolean interfacing = true;
         int inputInt = -9999;
 
         while (interfacing) {
-                System.out.println("Enter an int between " + min + '-' + max);
-                inputInt = lineReader.nextInt();
+            System.out.println("Enter an int between " + min + '-' + max);
+            inputInt = lineReader.nextInt();
 
-                if (min <= inputInt && inputInt <= max){
-                    interfacing = false;
-                } else {
-                    System.out.println("Invalid selection");
-                }
+            if (min <= inputInt && inputInt <= max) {
+                interfacing = false;
+            } else {
+                System.out.println("Invalid selection");
+            }
         }
 
         // lineReader.close();
-        
-        return inputInt;
-    }    
 
-    void getHomePage(){
-        if (screenPath.isEmpty() || !screenPath.get(0).equals("homepage")){
-                screenPath.add(0, "homepage");
-            } else {
-                Devices.setRandomAllDevices();
-            }
-        
+        return inputInt;
+    }
+
+    void getHomePage() {
+        if (screenPath.isEmpty() || !screenPath.get(0).equals("homepage")) {
+            screenPath.add(0, "homepage");
+        } else {
+            Devices.setRandomAllDevices();
+        }
+
         System.out.println("1) display devices");
         System.out.println("2) execute next automation");
         System.out.println("3) add automation");
@@ -54,7 +54,7 @@ public class UIManager {
                 break;
             case 2:
 
-                if (AutomatedEventManager.automationQueue.isEmpty()){
+                if (AutomatedEventManager.automationQueue.isEmpty()) {
                     System.out.println("Automation queue is empty");
                     break;
                 }
@@ -91,16 +91,18 @@ public class UIManager {
             case 8:
                 screenPath.add("loginPage");
                 this.getLoginPage();
-                break; 
+                break;
             case 9:
+                System.out.println("Creating demo user");
+                User.setupDemo();
+                
                 System.out.println("Creating demo devices");
                 Devices.createDevicesForDemo();
 
                 System.out.println("Creating demo automated events");
                 AutomatedEvent.setupAutomatedEventsForDemo();
 
-                System.out.println("Creating demo user");
-                User.setupDemo();
+
             default:
                 break;
         }
@@ -109,12 +111,12 @@ public class UIManager {
         return;
     }
 
-    void getAddAutiomationPage(){
+    void getAddAutiomationPage() {
 
         Task event = new Task();
 
         System.out.println("enter required permission guest(1) user(2) admin(3)");
-        event.requiredPermission = PermissionManager.Permission.fromLevel(this.getInputChoice(1,3));
+        event.requiredPermission = PermissionManager.Permission.fromLevel(this.getInputChoice(1, 3));
 
         System.out.println("enter the eventID");
         event.eventID = this.getInputChoice(1, 999);
@@ -130,10 +132,10 @@ public class UIManager {
         event.allNeedToPass = getInputChoice(0, 1) == 1;
 
         boolean addingChecks = true;
-        while (addingChecks){
+        while (addingChecks) {
             System.out.println("Add a new check? (0) No (1) Yes");
 
-            if (1 == getInputChoice(0, 1)){
+            if (1 == getInputChoice(0, 1)) {
                 System.out.println("What type of check is this? (1) = (2) > (3) <");
                 Check<Number> checkObject;
                 switch (this.getInputChoice(1, 3)) {
@@ -166,32 +168,76 @@ public class UIManager {
         return;
     }
 
-    void getAdduserPage(){
+    void getAdduserPage() {
 
         screenPath.remove("addUserPage");
         return;
     }
 
-    void getLoginPage(){
+    void getLoginPage() {
         int ticker = 0;
         for (User user : User.Users) {
             System.out.println("(" + ticker + ") " + user.userName);
             ticker++;
         }
         User.setUser(User.Users.get(this.getInputChoice(0, ticker - 1)));
-        
+
         screenPath.remove("loginpage");
         return;
     }
 
-    void getAuditPage(){
+    void getAuditPage() {
+        ArrayList<DataExporter> curData = AuditLogManager.dataList;
 
-        screenPath.remove("auditPage");
-        return;
-    }
+        while (true) {
+            System.out.println("1) filter by log type");
+            System.out.println("2) filter by status");
+            System.out.println("3) filter by invoker id");
+            System.out.println("4) filter by time");
+            System.out.println("5) export");
+            System.out.println("6) back");
 
-    void getTasksPage(){
-        return;
+            int choice = this.getInputChoice(1, 6);
+            switch (choice) {
+                case 1:
+                    for (String type : AuditLogManager.getEventStringsFromData(curData)) {
+                        System.out.println(type);
+                    }
+
+                    System.out.println("Type a type to filter by (Case sensitive)");
+                    String filterChoice = this.getStringInput();
+
+                    curData = AuditLogManager.fetchLogsOfType(filterChoice, curData);
+                    break;
+                case 2:
+                    System.out.println("Type a type to filter by pass(1) failed(2)");
+                    boolean filterChoiceB = this.getInputChoice(1, 2) == 1;
+
+                    curData = AuditLogManager.filterByStatus(filterChoiceB, curData);
+                    break;
+                case 3:
+                    System.out.println("Type a type an invoker ID");
+                    int filterChoiceID = this.getInputChoice(1, 999);
+
+                    curData = AuditLogManager.filterByInvokerID(filterChoiceID, curData);
+                    break;
+                case 4:
+                    System.out.println("Type a type an epoch time");
+                    int filterChoiceTime = this.getInputChoice(1, 999999999);
+
+                    curData = AuditLogManager.filterByTime(filterChoiceTime, curData);
+                    break;
+                case 5:
+                    AuditLogManager.exportData(curData);
+                    break;
+                case 6:
+                    screenPath.remove("auditPage");
+                    return;
+                default:
+                    break;
+            }
+        }
+
     }
 
 }

@@ -7,19 +7,19 @@ public class AuditLogManager extends DataExporter {
         dataList.add(data);
     }
 
-    ArrayList<DataExporter> fetchLogsOfType(String data){
+    static ArrayList<DataExporter> fetchLogsOfType(String data, ArrayList<DataExporter> curList){
         ArrayList<DataExporter> filtered = new ArrayList<>();
-            for (DataExporter log : dataList) {
-                if (log.type.equalsIgnoreCase(type)) {
+            for (DataExporter log : curList) {
+                if (log.type.equalsIgnoreCase(data)) {
                     filtered.add(log);
                 }
             }
         return filtered;
     }
 
-    ArrayList<DataExporter> filterByStatus(boolean status){
+    static ArrayList<DataExporter> filterByStatus(boolean status, ArrayList<DataExporter> curList){
         ArrayList<DataExporter> filtered = new ArrayList<>();
-            for (DataExporter log : dataList) {
+            for (DataExporter log : curList) {
                 if (log.status == status) {
                     filtered.add(log);
                 }
@@ -27,9 +27,9 @@ public class AuditLogManager extends DataExporter {
         return filtered;
     }
 
-    ArrayList<DataExporter> filterByInvokerID(int ID){
+    static ArrayList<DataExporter> filterByInvokerID(int ID, ArrayList<DataExporter> curList){
         ArrayList<DataExporter> filtered = new ArrayList<>();
-            for (DataExporter log : dataList) {
+            for (DataExporter log : curList) {
                 if (log.invokerID == ID) {
                     filtered.add(log);
                 }
@@ -37,9 +37,9 @@ public class AuditLogManager extends DataExporter {
         return filtered;
     }
 
-    ArrayList<DataExporter> filterByTime(int minimumDate){
+    static ArrayList<DataExporter> filterByTime(int minimumDate, ArrayList<DataExporter> curList){
        ArrayList<DataExporter> filtered = new ArrayList<>();
-        for (DataExporter log : dataList) {
+        for (DataExporter log : curList) {
             if (log.time.toEpochSecond(null, null) >= minimumDate) {
                 filtered.add(log);
             }
@@ -47,9 +47,9 @@ public class AuditLogManager extends DataExporter {
         return filtered;
     }
 
-    ArrayList<String> getEventStringsFromData() {
+    static ArrayList<String> getEventStringsFromData(ArrayList<DataExporter> curList) {
         ArrayList<String> eventStrings = new ArrayList<>();
-        for (DataExporter log : dataList) {
+        for (DataExporter log : curList) {
             eventStrings.add(log.type);
         }
         return eventStrings;
