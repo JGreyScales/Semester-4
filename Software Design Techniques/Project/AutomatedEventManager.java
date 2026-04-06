@@ -1,10 +1,19 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AutomatedEventManager extends DataExporter {
     static ArrayList<AutomatedEvent> automationQueue = new ArrayList<>();
 
     static boolean addAutomatedEventToQueue(AutomatedEvent event){
-        return automationQueue.add(event);
+        DataExporter de = new DataExporter();
+
+        de.time = LocalDate.now();
+        de.status = automationQueue.add(event);
+        de.type = "automation added to queue";
+        de.exportable = true;
+        de.log = "added automation: " + event.export();
+
+        return de.status;
     }
 
     static boolean static_export() {
@@ -12,28 +21,30 @@ public class AutomatedEventManager extends DataExporter {
         System.out.println("AutomationQueue Contents:");
         if (automationQueue != null) {
             for (AutomatedEvent event : automationQueue) {
-                event.export();
+                System.out.print(event.export());
             }
         } else {
             System.out.println("Queue is null.");
         }
-
+        System.out.println();
         return true;
     }
 
     @Override
-    boolean export() {
+    String export(String... dataToAdd) {
+        String actualData = (dataToAdd.length > 0) ? dataToAdd[0] : "";
+        StringBuilder sb = new StringBuilder(actualData);
 
-        System.out.println("AutomationQueue Contents:");
+        sb.append("\nAutomationQueue Contents:");
         if (automationQueue != null) {
             for (AutomatedEvent event : automationQueue) {
-                event.export();
+                sb.append("\n" + event.export());
             }
         } else {
-            System.out.println("Queue is null.");
+            sb.append("\nQueue is null.");
         }
 
-        return super.export();
+        return sb.toString();
     }
 
     boolean peform() {

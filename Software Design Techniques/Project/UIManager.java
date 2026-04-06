@@ -98,6 +98,9 @@ public class UIManager {
 
                 System.out.println("Creating demo automated events");
                 AutomatedEvent.setupAutomatedEventsForDemo();
+
+                System.out.println("Creating demo user");
+                User.setupDemo();
             default:
                 break;
         }
@@ -108,7 +111,10 @@ public class UIManager {
 
     void getAddAutiomationPage(){
 
-        AutomatedEvent event = new AutomatedEvent();
+        Task event = new Task();
+
+        System.out.println("enter required permission guest(1) user(2) admin(3)");
+        event.requiredPermission = PermissionManager.Permission.fromLevel(this.getInputChoice(1,3));
 
         System.out.println("enter the eventID");
         event.eventID = this.getInputChoice(1, 999);
@@ -167,8 +173,13 @@ public class UIManager {
     }
 
     void getLoginPage(){
-
-
+        int ticker = 0;
+        for (User user : User.Users) {
+            System.out.println("(" + ticker + ") " + user.userName);
+            ticker++;
+        }
+        User.setUser(User.Users.get(this.getInputChoice(0, ticker - 1)));
+        
         screenPath.remove("loginpage");
         return;
     }

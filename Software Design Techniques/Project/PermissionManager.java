@@ -14,6 +14,15 @@ public class PermissionManager {
         public int getLevel() {
             return this.level;
         }
+
+        public static Permission fromLevel(int level) {
+        for (Permission p : Permission.values()) {
+            if (p.level == level) {
+                return p;
+            }
+        }
+        throw new IllegalArgumentException("Invalid permission level: " + level);
+    }
     }
     
     static boolean hasPermission(User user, Task task) {

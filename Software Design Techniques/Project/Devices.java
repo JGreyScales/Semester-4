@@ -34,14 +34,18 @@ public class Devices {
         Devices.setRandomAllDevices();
     }
 
-    void display() {
-        System.out.println("Device: " + name + " | State: " + curState);
+    String display() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\nDevice: " + name + " | State: " + curState);
+        return sb.toString();
     }
 
     static void displayAll(){
         for (Devices deviceObject : devices) {
-            deviceObject.display();
+            System.out.print(deviceObject.display());
         }
+        System.out.println();
     }
 
     static void setRandomAllDevices() {

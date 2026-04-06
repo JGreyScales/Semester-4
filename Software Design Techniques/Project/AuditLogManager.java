@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class AuditLogManager extends DataExporter {
-    static ArrayList<DataExporter> dataList;
+    static ArrayList<DataExporter> dataList = new ArrayList<>();
+
+    static void addLog(DataExporter data){
+        dataList.add(data);
+    }
 
     boolean recieveLog(DataExporter data){
         return false;
@@ -36,12 +40,6 @@ public class AuditLogManager extends DataExporter {
     }
 
     ArrayList<DataExporter> getDataList(){
-        return null;
-    }
-
-    @Override
-    boolean export() {
-        // TODO Auto-generated method stub
-        return super.export();
+        return dataList;
     }
 }

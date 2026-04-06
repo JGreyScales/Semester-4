@@ -3,9 +3,11 @@ public class Check<A extends Number> extends AutomatedEvent {
     A input2;
 
     @Override
-    boolean export() {
-       System.out.println("Input1: " + input1 + "\nInput2: " + input2);
-       return true;
+    String export(String... dataToAdd) {
+       String actualData = (dataToAdd.length > 0) ? dataToAdd[0] : "";
+       StringBuilder sb = new StringBuilder(actualData);
+       sb.append("\nInput1: " + input1 + "\nInput2: " + input2);
+       return sb.toString();
     }
 
     void setInput1(A x){

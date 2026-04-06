@@ -13,7 +13,8 @@ public class AutomatedEvent extends AutomatedEventManager {
     }
 
     static void setupAutomatedEventsForDemo(){
-        AutomatedEvent event1 = new AutomatedEvent();
+        Task event1 = new Task();
+        event1.requiredPermission = PermissionManager.Permission.GUEST;
         event1.eventID = 1;
         event1.throttlePer = 0;
         event1.designatedDevice = Devices.devices.get(0);
@@ -30,11 +31,12 @@ public class AutomatedEvent extends AutomatedEventManager {
 
         AutomatedEventManager.addAutomatedEventToQueue(event1);
 
-        AutomatedEvent event2 = new AutomatedEvent();
-        event2.eventID = 1;
-        event2.throttlePer = 0;
+        Task event2 = new Task();
+        event2.requiredPermission = PermissionManager.Permission.USER;
+        event2.eventID = 2;
+        event2.throttlePer = 30;
         event2.designatedDevice = Devices.devices.get(4);
-        event2.allNeedToPass = true;
+        event2.allNeedToPass = false;
         Check<Number> check2_1 = new GreaterThan();
         check2_1.setInput2(50);
         event2.addCheck(check2_1);
@@ -46,69 +48,52 @@ public class AutomatedEvent extends AutomatedEventManager {
         event2.addCheck(check2_3);
 
         AutomatedEventManager.addAutomatedEventToQueue(event2);
+
+        Task event3 = new Task();
+        event3.requiredPermission = PermissionManager.Permission.ADMIN;
+        event3.eventID = 3;
+        event3.throttlePer = 100;
+        event3.designatedDevice = Devices.devices.get(4);
+        event3.allNeedToPass = false;
+        Check<Number> check3_1 = new GreaterThan();
+        check3_1.setInput2(50);
+        event3.addCheck(check3_1);
+        Check<Number> check3_2 = new LessThan();
+        check3_2.setInput2(180);
+        event3.addCheck(check3_2);
+        Check<Number> check3_3 = new GreaterThan();
+        check3_3.setInput2(-25);
+        event3.addCheck(check3_3);
+
+        AutomatedEventManager.addAutomatedEventToQueue(event3);
     }
 
     @Override
-    boolean export() {
-        System.out.println("--- Automated Event Data ---");
-        System.out.println("Event ID    : " + eventID);
-        System.out.println("Throttle %  : " + throttlePer);
-        designatedDevice.display();
+    String export(String... dataToAdd) {
+        String actualData = (dataToAdd.length > 0) ? dataToAdd[0] : "";
+
+        StringBuilder sb = new StringBuilder(actualData);
+        sb.append("\n--- Automated Event Data ---");
+        sb.append("\nEvent ID    : " + eventID);
+        sb.append("\nThrottle %  : " + throttlePer);
+        sb.append("\n" + designatedDevice.display());
         
-        System.out.println("Event Queue : ");
+        sb.append("\nEvent Queue : ");
         if (checkQueue == null || checkQueue.isEmpty()) {
-            System.out.println("  [Empty]");
+            sb.append("\n  [Empty]");
         } else {
             for (Check<Number> entry : checkQueue) {
-                System.out.println("Check Object " );
-                entry.export();
+                sb.append("\nCheck Object " );
+                sb.append("\n" + entry.export());
             }
         }
         
-        System.out.println("---------------------------");
-        return true; 
+        sb.append("\n---------------------------");
+        return sb.toString(); 
     }
 
     @Override
     public String toString() {
         return "Event[ID=" + eventID + ", Throttle=" + throttlePer + "%]";
-    }
-
-    @Override
-    boolean peform() {
-        int ticker = 0;
-        boolean onePass = false;
-
-        if (checkQueue.isEmpty()){
-            System.out.println("No checks to perform");
-            return true;
-        }
-
-        for (Check<Number> check : checkQueue) {
-            ticker += 1;
-            // throttle checks
-            try {
-                Thread.sleep(Math.round(1000 * (1.0 + (throttlePer / 100.0))));
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); 
-                System.err.println("The event execution was interrupted.");
-            }
-
-            check.setInput1(designatedDevice.curState);
-
-            if (check.peform()){
-                System.out.println("Check " + ticker + " Passed");
-                onePass = true;
-                continue;
-            } else {
-                System.out.println("Check " + ticker + " Failed");
-                if (allNeedToPass){
-                    return false;
-                }
-            }
-        }
-
-
-        return onePass;
     }
 }
